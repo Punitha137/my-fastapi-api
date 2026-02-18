@@ -1,0 +1,22 @@
+service: fastapi-lambda
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.12
+  region: us-east-1
+  stage: dev
+
+functions:
+  app:
+    handler: app.handler
+    events:
+      - httpApi: "*"  # all routes
+
+plugins:
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
