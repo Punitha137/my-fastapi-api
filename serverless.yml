@@ -1,18 +1,15 @@
 service: fastapi-lambda
 
-frameworkVersion: '3'
-
 provider:
   name: aws
-  runtime: python3.12
-  region: us-east-1
-  stage: dev
+  runtime: python3.9
+  region: ap-south-1   # Change if needed
 
 functions:
   app:
     handler: app.handler
     events:
-      - httpApi: "*"  # all routes
+      - httpApi: '*'
 
 plugins:
   - serverless-python-requirements
